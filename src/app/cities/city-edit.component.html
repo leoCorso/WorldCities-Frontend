@@ -1,0 +1,56 @@
+<div class="city-edit">
+    <h1>{{ title }}</h1>
+    <p *ngIf="!this.city && this.id">Loading...</p>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+        <p><mat-error *ngIf="this.form.errors?.['isDupeCity'] && this.form.dirty">
+            <strong>Error</strong>:
+            A city with the same <i>name</i>, <i>lat</i>, <i>lon</i> and <i>country</i> already exists.
+        </mat-error></p>
+
+        <!-- Form Name -->
+        <mat-form-field>
+            <mat-label>Name:</mat-label>
+            <input matInput formControlName="name" required placeholder="Type a name">
+            <mat-error *ngFor="let error of this.getErrors(this.form.get('name')!, 'Name')">{{ error }}</mat-error>
+        </mat-form-field>
+        <!-- Form Lat -->
+        <mat-form-field>
+            <mat-label>Latitude::</mat-label>
+            <input matInput formControlName="lat" required placeholder="Type a Latitude">
+            <mat-error *ngFor="let error of this.getErrors(this.form.get('lat')!, 'Latitude', {'pattern': 'Must be a number'})">{{ error }}</mat-error>
+        </mat-form-field>
+        <!-- Form Lon -->
+        <mat-form-field>
+            <mat-label>Longitude:</mat-label>
+            <input matInput formControlName="lon" required placeholder="Type a Longitude">
+            <mat-error *ngFor="let error of this.getErrors(this.form.get('lon')!, 'Longitude', {'pattern': 'Must be a number'})">{{ error }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field *ngIf="this.countries | async as result">
+            <mat-label>Select a country...</mat-label>
+            <mat-select id="countryId" formControlName="countryId">
+                <mat-option *ngFor="let country of this.countries | async as result" [value]="country.id">
+                    {{ country.name }}
+                </mat-option>
+            </mat-select>
+            <mat-error *ngFor="let error of this.getErrors(this.form.get('countryId')!, 'Country')">{{ error }}</mat-error>
+        </mat-form-field>
+
+        <div>
+            <button mat-flat-button color="primary" type="submit" [disabled]="this.form.invalid">{{ this.id ? 'Save' : 'Create' }}</button>
+            <button mat-flat-button color="secondary" [routerLink]="['/cities']">Cancel</button>
+        </div>
+    </form>
+</div>
+
+<div class="info">
+    <div class="info-header">
+        <div class="info-body">
+            <div class="info-value">
+                <span *ngIf="activityLog" [innerHtml]="activityLog">
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
