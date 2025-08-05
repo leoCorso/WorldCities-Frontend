@@ -16,7 +16,8 @@ export abstract class BaseFormComponent {
   getErrors(
     control: AbstractControl, 
     displayName: string, 
-    customMessages: {[key: string] : string } | null = null): string[]{
+    customMessages: {[key: string] : string } | null = null): string[]
+  {
     let errors: string[] = [];
     Object.keys(control.errors || {}).forEach(key => {
       switch(key){

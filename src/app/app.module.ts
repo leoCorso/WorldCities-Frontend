@@ -15,6 +15,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CityEditComponent } from './cities/city-edit.component';
 import { CountryEditComponent } from './countries/country-edit.component';
 import { DevWebPageComponent } from './dev-web-page/dev-web-page.component';
+import { LoginComponent } from './auth/login.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { DevWebPageComponent } from './dev-web-page/dev-web-page.component';
     CityEditComponent,
     CountryEditComponent,
     DevWebPageComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

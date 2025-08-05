@@ -6,6 +6,7 @@ import { CountriesComponent } from './countries/countries.component';
 import { CityEditComponent } from './cities/city-edit.component';
 import { CountryEditComponent } from './countries/country-edit.component';
 import { DevWebPageComponent } from './dev-web-page/dev-web-page.component';
+import { LoginComponent } from './auth/login.component';
 
 const routes: Routes = [
   {
@@ -42,6 +43,10 @@ const routes: Routes = [
     path: 'country',
     component: CountryEditComponent,
     pathMatch: 'full'
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
   },
   {
     path: 'dev',
