@@ -2,7 +2,7 @@
     <h1>Login</h1>
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
         <p>
-            <mat-error *ngIf="loginResult && !loginResult.sucess"><strong>ERROR</strong>: {{ loginResult.message }}</mat-error>
+            <mat-error *ngIf="loginResult && !loginResult.success"><strong>ERROR</strong>: {{ loginResult.message }}</mat-error>
         </p>
         <!-- Name -->
          <mat-form-field>

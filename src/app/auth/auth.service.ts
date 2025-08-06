@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { LoginRequest } from './login-request';
-import { Observable, tap } from 'rxjs';
+import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { LoginResult } from './login-result';
 
@@ -9,6 +9,9 @@ import { LoginResult } from './login-result';
   providedIn: 'root'
 })
 export class AuthService {
+
+  private _authStatus = new BehaviorSubject<boolean>(false);
+  public authStatus$ = this._authStatus.asObservable();
 
   constructor(protected httpClient: HttpClient) { }
 
@@ -25,9 +28,24 @@ export class AuthService {
   login(item: LoginRequest): Observable<LoginResult> {
     var url = environment.baseUrl + "api/Account/Login";
     return this.httpClient.post<LoginResult>(url, item).pipe(tap(loginResult => {
-      if(loginResult.sucess && loginResult.token){
+      if(loginResult.success && loginResult.token){
         localStorage.setItem(this.tokenkey, loginResult.token);
+        this.setAuthStatus(true);
       }
     }));
   }
+  init(): void {
+    if(this.isAuthenticated()){
+      this.setAuthStatus(true);
+    }
+  }
+  private setAuthStatus(isAuthenticated: boolean){
+    this._authStatus.next(isAuthenticated);
+  }
+
+  logout(): void{
+    localStorage.removeItem(this.tokenkey);
+    this.setAuthStatus(false);
+  }
+
 }

@@ -36,6 +36,9 @@ export class LoginComponent extends BaseFormComponent implements OnInit{
       next: (result: LoginResult) => {
         console.log(result);
         this.loginResult = result;
+        if(result.success){
+          this.router.navigate(['/']);
+        }
       },
       error: (error) => {
         console.log(error);
