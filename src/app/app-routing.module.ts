@@ -7,6 +7,7 @@ import { CityEditComponent } from './cities/city-edit.component';
 import { CountryEditComponent } from './countries/country-edit.component';
 import { DevWebPageComponent } from './dev-web-page/dev-web-page.component';
 import { LoginComponent } from './auth/login.component';
+import { AuthGuard } from './auth/auth.guard';
 
 const routes: Routes = [
   {
@@ -27,7 +28,8 @@ const routes: Routes = [
   {
     path: 'city-edit/:id',
     component: CityEditComponent,
-    pathMatch: 'full'
+    pathMatch: 'full',
+    canActivate: [AuthGuard]
   },
   {
     path: 'city',
@@ -37,7 +39,8 @@ const routes: Routes = [
   {
     path: 'country-edit/:id',
     component: CountryEditComponent,
-    pathMatch: 'full'
+    pathMatch: 'full',
+    canActivate: [AuthGuard]
   },
   {
     path: 'country',
