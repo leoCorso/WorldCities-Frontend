@@ -17,6 +17,7 @@ import { CountryEditComponent } from './countries/country-edit.component';
 import { DevWebPageComponent } from './dev-web-page/dev-web-page.component';
 import { LoginComponent } from './auth/login.component';
 import { AuthInterceptor } from './auth/auth.interceptor';
+import { HubTestComponent } from './hub-test/hub-test.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { AuthInterceptor } from './auth/auth.interceptor';
     CountryEditComponent,
     DevWebPageComponent,
     LoginComponent,
+    HubTestComponent,
   ],
   imports: [
     BrowserModule,

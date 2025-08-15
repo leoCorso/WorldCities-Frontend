@@ -8,6 +8,7 @@ import { CountryEditComponent } from './countries/country-edit.component';
 import { DevWebPageComponent } from './dev-web-page/dev-web-page.component';
 import { LoginComponent } from './auth/login.component';
 import { AuthGuard } from './auth/auth.guard';
+import { HubTestComponent } from './hub-test/hub-test.component';
 
 const routes: Routes = [
   {
@@ -54,6 +55,11 @@ const routes: Routes = [
   {
     path: 'dev',
     component: DevWebPageComponent,
+    pathMatch: 'full'
+  },
+  {
+    path: 'hub-test',
+    component: HubTestComponent,
     pathMatch: 'full'
   }
 ];
