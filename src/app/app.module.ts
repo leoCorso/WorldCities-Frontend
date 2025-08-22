@@ -7,7 +7,6 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { HomeComponent } from './home/home.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
-
 import { CitiesComponent } from './cities/cities.component';
 import { AngularMaterialModule } from './angular-material/angular-material.module';
 import { CountriesComponent } from './countries/countries.component';
@@ -19,6 +18,7 @@ import { LoginComponent } from './auth/login.component';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { HubTestComponent } from './hub-test/hub-test.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { ConnectionServiceModule } from 'ng-connection-service'
 
 @NgModule({
   declarations: [
@@ -45,6 +45,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
       // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000'
     }),
+    ConnectionServiceModule
   ],
   providers: [
     provideAnimationsAsync(),
